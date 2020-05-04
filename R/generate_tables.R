@@ -18,9 +18,39 @@ generate_tables <- function(year) {
   url <- paste0("https://www.pro-football-reference.com/years/", year, "/draft.htm")
   
   page <- rvest::html_table(xml2::read_html(url), header = TRUE, fill = TRUE)
-  dt_page <- data.table::data.table(page[[1]])[!V1 == "Rnd", .(V1, V2, V3, V4, V5, V6, V13)]
-  setnames(dt_page, colnames(dt_page), c("ROUND", "OVERALL_PICK", "TEAM", "PLAYER", "POSITION", "AGE", "COLLEGE"))
+  dt_page <- data.table::data.table(page[[1]])[!V1 == "Rnd", .(YEAR = as.numeric(year), 
+                                                               ROUND = as.numeric(V1), 
+                                                               OVERALL_PICK = as.numeric(V2), 
+                                                               TEAM = V3, 
+                                                               PLAYER = V4, 
+                                                               POSITION = V5, 
+                                                               AGE = as.numeric(V6), 
+                                                               COLLEGE = V13
+                                                               )
+                                               ]
+  
   
   return(dt_page)
   
 }
+
+generate_tables("2012")
+
+draft_picks <- function(min, max) {
+  
+  year_range <- list(seq(min:max))
+  year_range <- lapply(year_range, function(x) {as.character(as.numeric(as.character(x)) - 1 + as.numeric(as.character(min)))})
+  year_range <- as.list(unlist(year_range))
+  
+  dt_pages <- lapply(year_range, generate_tables)
+  
+  dt_pages <- data.table::rbindlist(dt_pages)
+  
+  return(dt_pages)
+  
+}
+
+also_check <- draft_picks("2010", "2020")
+
+check <- list("2010", "2011")
+lapply(check, generate_tables)
