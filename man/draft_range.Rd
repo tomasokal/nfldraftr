@@ -7,10 +7,12 @@
 draft_range(min, max)
 }
 \arguments{
-\item{year}{}
+\item{min}{First year in range.}
+
+\item{max}{Last year in range.}
 }
 \value{
-
+All draft picks from first year to last year in provided range.
 }
 \description{
 This is general function that scrapes the pro-football-reference website for the year that you specify.

@@ -7,10 +7,10 @@
 draft_year(year)
 }
 \arguments{
-\item{year}{}
+\item{year}{A year.}
 }
 \value{
-
+All draft picks provided year.
 }
 \description{
 This is general function that scrapes the pro-football-reference website for the year that you specify.
