@@ -1,0 +1,65 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+
+library(rtist)
+```
+
+# rtist
+
+<!-- [![Travis build status](https://travis-ci.org/tomasokal/rtist.svg?branch=master)](https://travis-ci.org/tomasokal/rtist) -->
+<!-- [![Dependencies](https://tinyverse.netlify.com/badge/rtist)](https://cran.r-project.org/package=rtist) -->
+<!-- [![CRAN status](http://www.r-pkg.org/badges/version/rtist)](https://cran.r-project.org/package=rtist) -->
+<!-- [![Downloads](http://cranlogs.r-pkg.org/badges/rtist?color=brightgreen)](http://www.r-pkg.org/pkg/rtist) -->
+
+## Overview
+
+Can use to pull historical draft data from [Pro Football Reference](https://www.pro-football-reference.com/).
+
+## Installation
+
+Install from Github.
+
+``` {r, eval = FALSE}
+# Install remotes to download.
+install.packages("remotes")
+
+# And then install from github.
+remotes::install_github("tomasokal/nfldraftr")
+```
+
+## Draft Years
+
+`nfldraftr` provides historical draft data that can be accessed one year at a time or through a range of years.
+
+``` {r year, eval = TRUE}
+# Load package
+library(nfldraftr)
+
+# Draft data from 2020
+nfldraftr::draft_year(year = "2020")
+```
+
+``` {r range, eval = TRUE}
+# Draft data from 2020
+nfldraftr::draft_range(min = "2015", max = "2020")
+```
+
+Data is pulled in to feature draft year, pick round, overall pick number, team, player, position, age, and college.
+
+## Credits
+
+All data is pulled from [Pro Football Reference](https://www.pro-football-reference.com/). Accuracy of this data is dependent on the source.
+
+
+
