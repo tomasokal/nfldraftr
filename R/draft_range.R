@@ -5,7 +5,7 @@
 #'
 #' @param year 
 #'
-#' @import data.table rbindlist
+#' @importFrom data.table rbindlist
 #'
 #' @return
 #' @export
