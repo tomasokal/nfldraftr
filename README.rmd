@@ -12,10 +12,12 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-library(rtist)
+library(nfldraftr)
+library(kableExtra)
+library(knitr)
 ```
 
-# rtist
+# nfldraftr
 
 <!-- [![Travis build status](https://travis-ci.org/tomasokal/rtist.svg?branch=master)](https://travis-ci.org/tomasokal/rtist) -->
 <!-- [![Dependencies](https://tinyverse.netlify.com/badge/rtist)](https://cran.r-project.org/package=rtist) -->
@@ -47,12 +49,17 @@ remotes::install_github("tomasokal/nfldraftr")
 library(nfldraftr)
 
 # Draft data from 2020
-nfldraftr::draft_year(year = "2020")
+draft2020 <- nfldraftr::draft_year(year = "2020")
+head(draft2020) %>% 
+  kable(row.names = FALSE) 
 ```
 
 ``` {r range, eval = TRUE}
 # Draft data from 2020
-nfldraftr::draft_range(min = "2015", max = "2020")
+df_draft_range <- nfldraftr::draft_range(min = "2015", max = "2020")
+df_draft_range <- df_draft_range[order(df_draft_range$OVERALL_PICK), ]
+head(df_draft_range) %>% 
+  kable(row.names = FALSE) 
 ```
 
 Data is pulled in to feature draft year, pick round, overall pick number, team, player, position, age, and college.
