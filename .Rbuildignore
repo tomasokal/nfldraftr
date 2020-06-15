@@ -2,3 +2,4 @@ nfldraftr.Rproj
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
+README.rmd

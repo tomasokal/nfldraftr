@@ -14,6 +14,23 @@ status](https://github.com/tomasokal/nfldraftr/workflows/R-CMD-check/badge.svg)]
 Can use to pull historical draft data from [Pro Football
 Reference](https://www.pro-football-reference.com/).
 
+`nfldraftr` currently provides the following information:
+
+  - YEAR: Year drafted
+  - ROUND: Round drafted
+  - OVERALL\_PICK: Overall pick in draft
+  - TEAM: Name of team drafted by
+  - PLAYER: Name of player
+  - POSITION: Position drafted for
+  - AGE: Age when drafted
+  - COLLEGE: Name of college
+  - LAST\_YEAR\_PLAYED: Last year played in NFL
+  - ALL\_PROS: Number of First Team ALL-PRO selections
+  - PRO\_BOWLS: Number of Pro-Bowl selections
+  - YEARS\_STARTED: Number of years as primary starter for his team at
+    his position
+  - GAMES\_PLAYED: Games played in NFL
+
 ## Installation
 
 Install from Github.
@@ -37,7 +54,7 @@ library(nfldraftr)
 
 # Draft data from 2020
 draft2020 <- nfldraftr::draft_year(year = "2020")
-head(draft2020) %>% 
+head(draft2020[, 1:8]) %>% 
   kable(row.names = FALSE) 
 ```
 
@@ -421,7 +438,7 @@ Oregon
 # Draft data from 2020
 df_draft_range <- nfldraftr::draft_range(min = "2015", max = "2020")
 df_draft_range <- df_draft_range[order(df_draft_range$OVERALL_PICK), ]
-head(df_draft_range) %>% 
+head(df_draft_range[, c(1, 3, 4, 5, 6, 12, 13)]) %>% 
   kable(row.names = FALSE) 
 ```
 
@@ -434,12 +451,6 @@ head(df_draft_range) %>%
 <th style="text-align:right;">
 
 YEAR
-
-</th>
-
-<th style="text-align:right;">
-
-ROUND
 
 </th>
 
@@ -469,13 +480,13 @@ POSITION
 
 <th style="text-align:right;">
 
-AGE
+YEARS\_STARTER
 
 </th>
 
-<th style="text-align:left;">
+<th style="text-align:right;">
 
-COLLEGE
+GAMES\_PLAYED
 
 </th>
 
@@ -490,12 +501,6 @@ COLLEGE
 <td style="text-align:right;">
 
 2015
-
-</td>
-
-<td style="text-align:right;">
-
-1
 
 </td>
 
@@ -525,13 +530,13 @@ QB
 
 <td style="text-align:right;">
 
-21
+5
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:right;">
 
-Florida St. 
+72
 
 </td>
 
@@ -542,12 +547,6 @@ Florida St. 
 <td style="text-align:right;">
 
 2016
-
-</td>
-
-<td style="text-align:right;">
-
-1
 
 </td>
 
@@ -577,13 +576,13 @@ QB
 
 <td style="text-align:right;">
 
-21
+4
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:right;">
 
-California
+54
 
 </td>
 
@@ -594,12 +593,6 @@ California
 <td style="text-align:right;">
 
 2017
-
-</td>
-
-<td style="text-align:right;">
-
-1
 
 </td>
 
@@ -629,13 +622,13 @@ DE
 
 <td style="text-align:right;">
 
-21
+3
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:right;">
 
-Texas A\&M
+37
 
 </td>
 
@@ -646,12 +639,6 @@ Texas A\&M
 <td style="text-align:right;">
 
 2018
-
-</td>
-
-<td style="text-align:right;">
-
-1
 
 </td>
 
@@ -681,13 +668,13 @@ QB
 
 <td style="text-align:right;">
 
-23
+2
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:right;">
 
-Oklahoma
+30
 
 </td>
 
@@ -698,12 +685,6 @@ Oklahoma
 <td style="text-align:right;">
 
 2019
-
-</td>
-
-<td style="text-align:right;">
-
-1
 
 </td>
 
@@ -733,13 +714,13 @@ QB
 
 <td style="text-align:right;">
 
-22
+1
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:right;">
 
-Oklahoma
+16
 
 </td>
 
@@ -750,12 +731,6 @@ Oklahoma
 <td style="text-align:right;">
 
 2020
-
-</td>
-
-<td style="text-align:right;">
-
-1
 
 </td>
 
@@ -785,13 +760,13 @@ QB
 
 <td style="text-align:right;">
 
-23
+0
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:right;">
 
-LSU
+NA
 
 </td>
 

@@ -24,11 +24,16 @@ draft_year <- function(year) {
                             )
   df_page <- data.frame(page[1])
   df_page$YEAR <- as.numeric(year)
-  df_page_subset <- df_page[!df_page$Var.1 == "Rnd", c(30, 1, 2, 3, 4, 5, 6, 28)]
-  names(df_page_subset) <- c("YEAR", "ROUND", "OVERALL_PICK", "TEAM", "PLAYER", "POSITION", "AGE", "COLLEGE")
+  df_page_subset <- df_page[!df_page$Var.1 == "Rnd", c(30, 1, 2, 3, 4, 5, 6, 28, 7, 8, 9, 10, 13)]
+  names(df_page_subset) <- c("YEAR", "ROUND", "OVERALL_PICK", "TEAM", "PLAYER", "POSITION", "AGE", "COLLEGE", "LAST_YEAR_PLAYED", "ALL_PROS", "PRO_BOWLS", "YEARS_STARTER", "GAMES_PLAYED")
   df_page_subset$ROUND <- as.numeric(df_page_subset$ROUND)
   df_page_subset$OVERALL_PICK <- as.numeric(df_page_subset$OVERALL_PICK)
   df_page_subset$AGE <- as.numeric(df_page_subset$AGE)
+  df_page_subset$LAST_YEAR_PLAYED <- as.numeric(df_page_subset$LAST_YEAR_PLAYED)
+  df_page_subset$ALL_PROS <- as.numeric(df_page_subset$ALL_PROS)
+  df_page_subset$PRO_BOWLS <- as.numeric(df_page_subset$PRO_BOWLS)
+  df_page_subset$YEARS_STARTER <- as.numeric(df_page_subset$YEARS_STARTER)
+  df_page_subset$GAMES_PLAYED <- as.numeric(df_page_subset$GAMES_PLAYED)
   
   return(df_page_subset)
   
