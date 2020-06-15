@@ -7,12 +7,12 @@
 #'
 #' @importFrom rvest html_table
 #' @importFrom xml2 read_html
-#' @import data.table
 #'
-#' @return All draft picks provided year.
+#' @return All draft picks in provided year.
 #' @export
 #'
 #' @examples draft_year(year = "2020")
+#' 
 draft_year <- function(year) {
   
   V1 <- V2 <- V3 <- V4 <- V5 <- V6 <- V13 <- NULL
@@ -22,19 +22,14 @@ draft_year <- function(year) {
                             , header = TRUE
                             , fill = TRUE
                             )
-  dt_page <- data.table::data.table(page[[1]])[!V1 == "Rnd"
-                                               , list(YEAR = as.numeric(year)
-                                                      , ROUND = as.numeric(V1)
-                                                      , OVERALL_PICK = as.numeric(V2)
-                                                      , TEAM = V3
-                                                      , PLAYER = V4
-                                                      , POSITION = V5
-                                                      , AGE = as.numeric(V6)
-                                                      , COLLEGE = V13
-                                                      )
-                                               ]
+  df_page <- data.frame(page[1])
+  df_page$YEAR <- as.numeric(year)
+  df_page_subset <- df_page[!df_page$Var.1 == "Rnd", c(30, 1, 2, 3, 4, 5, 6, 28)]
+  names(df_page_subset) <- c("YEAR", "ROUND", "OVERALL_PICK", "TEAM", "PLAYER", "POSITION", "AGE", "COLLEGE")
+  df_page_subset$ROUND <- as.numeric(df_page_subset$ROUND)
+  df_page_subset$OVERALL_PICK <- as.numeric(df_page_subset$OVERALL_PICK)
+  df_page_subset$AGE <- as.numeric(df_page_subset$AGE)
   
-  
-  return(dt_page)
+  return(df_page_subset)
   
 }

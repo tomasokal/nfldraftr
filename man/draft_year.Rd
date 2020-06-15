@@ -10,7 +10,7 @@ draft_year(year)
 \item{year}{A year.}
 }
 \value{
-All draft picks provided year.
+All draft picks in provided year.
 }
 \description{
 This is general function that scrapes the pro-football-reference website for the year that you specify.
@@ -18,4 +18,5 @@ Will return all of the draft picks of that year with round, pick number, team, n
 }
 \examples{
 draft_year(year = "2020")
+
 }

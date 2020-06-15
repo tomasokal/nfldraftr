@@ -5,7 +5,9 @@ Title: A package to get historical draft data from the NFL
 Description: Historical draft data from the NFL.
 Author: Tomas Okal <tomas.okal@gmail.com>
 Maintainer: Tomas Okal <tomas.okal@gmail.com>
-Depends: data.table, rvest, xml2
+Depends: rvest, xml2
 Encoding: UTF-8
 RoxygenNote: 7.0.2
 License: MIT + file LICENSE
+Suggests: 
+    testthat

@@ -20,4 +20,5 @@ Will return all of the draft picks of that year with round, pick number, team, n
 }
 \examples{
 draft_range(min = "2010", max = "2020")
+
 }
