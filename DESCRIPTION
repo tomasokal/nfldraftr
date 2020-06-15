@@ -9,3 +9,5 @@ Depends: rvest, xml2
 Encoding: UTF-8
 RoxygenNote: 7.0.2
 License: MIT + file LICENSE
+URL: https://github.com/tomasokal/nfldraftr
+BugReports: https://github.com/tomasokal/nfldraftr/issues

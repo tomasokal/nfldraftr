@@ -1,3 +1,4 @@
 nfldraftr.Rproj
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.github$
